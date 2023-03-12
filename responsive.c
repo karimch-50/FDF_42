@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 07:57:22 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 17:03:21 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:47:56 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	responsive(t_data data, t_scale scale, int *z_scale)
 
 	zome_scale = 1;
 	*z_scale = 5;
-	while (data.x_len > 1 && data.y_len >= 1)
+	while (data.x_len > 1 && data.y_len > 1)
 	{
 		if (check_all_points(data, scale, zome_scale, 0))
 			break ;

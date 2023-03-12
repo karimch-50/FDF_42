@@ -6,25 +6,11 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:57:30 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 17:14:22 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:07:23 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-t_scale	fill_scale(t_data data)
-{
-	t_scale	scale;
-
-	scale.angle = ISO_ANGLE;
-	if (data.x_len == data.y_len)
-		scale.right_left = WIDTH / 2;
-	else
-		scale.right_left = WIDTH / 3;
-	scale.up_down = HEIGHT / 3;
-	scale.zome_scale = responsive(data, scale, &scale.z_scale);
-	return (scale);
-}
 
 int	key_hook_man(int key, t_data *data)
 {

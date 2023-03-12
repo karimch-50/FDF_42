@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:18:20 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 16:50:53 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:33:57 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	get_width(char *file_name)
 	{
 		while (line[i] && line[i] == ' ')
 			i++;
-		if (line[i])
+		if (line[i] && line[i] != '\n')
 			count++;
 		while (line[i] && line[i] != ' ')
 			i++;
@@ -38,6 +38,18 @@ int	get_width(char *file_name)
 	if (close (fd) == -1)
 		print_error(2, "Error: file discriptor error");
 	return (free(line), count);
+}
+
+int	is_empty(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i] == ' ')
+		i++;
+	if (str[i])
+		return (0);
+	return (1);
 }
 
 int	get_height(char	*file_name)
@@ -53,7 +65,7 @@ int	get_height(char	*file_name)
 	while (1)
 	{
 		line = get_next_line(fd, 0);
-		if (!line)
+		if (!line || is_empty(line))
 			break ;
 		free(line);
 		count++;

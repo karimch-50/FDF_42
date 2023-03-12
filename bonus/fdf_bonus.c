@@ -6,25 +6,11 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:58:31 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 16:46:57 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:49:55 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
-
-t_scale	fill_scale(t_data data)
-{
-	t_scale	scale;
-
-	scale.angle = ISO_ANGLE;
-	if (data.x_len == data.y_len)
-		scale.right_left = WIDTH / 2;
-	else
-		scale.right_left = WIDTH / 3;
-	scale.up_down = HEIGHT / 3;
-	scale.zome_scale = responsive(data, scale, &scale.z_scale);
-	return (scale);
-}
 
 int	main(int argc, char **argv)
 {

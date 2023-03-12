@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:41:41 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 20:06:54 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/12 21:56:11 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,27 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+t_scale	fill_scale(t_data data)
+{
+	t_scale	scale;
+
+	scale.angle = ISO_ANGLE;
+	if (data.x_len == data.y_len)
+		scale.right_left = WIDTH / 2;
+	else
+		scale.right_left = WIDTH / 3;
+	scale.up_down = HEIGHT / 5;
+	scale.zome_scale = (float)responsive(data, scale, &scale.z_scale) / \
+	(float)1.5;
+	return (scale);
+}
+
 void	projection_iso(int *x, int *y, int z, int angle)
 {
-	(void) angle;
-	*x = ((double)*x * cos(angle * M_PI / 180)) - ((double)*y * sin((angle / 2) * M_PI / 180));
-	*y = (((((double)*x * sin(angle * M_PI / 180)) + ((double)*y * cos((angle / 2) * M_PI / 180)))) - z) / 2;
+	*x = ((double)*x * cos(angle * M_PI / 180)) \
+	- ((double)*y * sin((angle / 2) * M_PI / 180));
+	*y = (((((double)*x * sin(angle * M_PI / 180)) \
+	+ ((double)*y * cos((angle / 2) * M_PI / 180)))) - z) / 2;
 }
 
 t_point	prepare_point(t_point point, t_scale scale, int proj)
@@ -45,8 +61,9 @@ void	draw_map(t_data	*data)
 	int	i;
 	int	j;
 
-	i = -1;
-	j = -1;
+	i = ((j = -1), -1);
+	if (data->x_len <= 1 && data->y_len <= 1)
+		return ;
 	while (++i < data->y_len)
 	{
 		j = -1;
