@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:58:40 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 21:50:26 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:37:44 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_scale
 	int		up_down;
 	int		z_scale;
 	float	angle;
+	float	rotation_angle;
+	int		rotat;
 }	t_scale;
 
 typedef struct s_line
@@ -124,7 +126,7 @@ int		get_b(int rgb);
 
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	projection_iso(int *x, int *y, int z, int angle);
-t_point	prepare_point(t_point point, t_scale scale, int proj);
+t_point	prepare_point(t_point point, t_scale scale, t_data data);
 int		responsive(t_data data, t_scale scale, int *z_scale);
 void	draw_line(t_img img, t_point p1, t_point p2);
 void	draw_map(t_data	*data);

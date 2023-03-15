@@ -6,11 +6,19 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 19:06:12 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 08:36:57 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:39:29 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
+}
 
 static int	take_decision(t_line *line, t_point *p1, t_point *p2)
 {

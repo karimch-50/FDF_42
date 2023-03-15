@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:57:36 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 17:09:27 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:57:04 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	redraw_map(t_data *data, t_scale scale, int res)
 	data->img.addr = mlx_get_data_addr(data->img.img, \
 	&data->img.bpp, &data->img.line_length, &data->img.endian);
 	if (res == 1)
+	{
 		data->scale = fill_scale(*data);
+	}
 	else
 	{
 		data->scale.up_down += scale.up_down;
@@ -27,6 +29,8 @@ void	redraw_map(t_data *data, t_scale scale, int res)
 		data->scale.angle += scale.angle;
 		data->scale.z_scale += scale.z_scale;
 		data->scale.zome_scale += scale.zome_scale;
+		data->scale.rotat = scale.rotat;
+		data->scale.rotation_angle += scale.rotation_angle;
 	}
 	draw_map(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, \

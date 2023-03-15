@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 09:58:31 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 21:49:55 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:44:54 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	main(int argc, char **argv)
 	data->img.img = mlx_new_image(data->mlx.mlx_ptr, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.img, \
 	&data->img.bpp, &data->img.line_length, &data->img.endian);
-	data->scale = fill_scale(*data);
 	data->proj = 1;
+	data->scale = fill_scale(*data);
 	draw_map(data);
 	mlx_put_image_to_window(data->mlx.mlx_ptr, \
 	data->mlx.mlx_win, data->img.img, 0, 0);

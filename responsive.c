@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 07:57:22 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 21:47:56 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/15 18:43:11 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ static int	check_all_points(t_data data, t_scale scale, \
 		{
 			x = data.coordinates[i][j].x * zome_scale;
 			y = data.coordinates[i][j].y * zome_scale;
-			projection_iso(&x, &y, data.coordinates[i][j].z * z_scale, \
-			scale.angle);
+			if (data.proj == 1)
+			{
+				projection_iso(&x, &y, data.coordinates[i][j].z * z_scale, \
+				scale.angle);
+			}
 			if (x + scale.right_left <= 0 || x + scale.right_left >= WIDTH \
 			|| y + scale.up_down <= 0 || y + scale.up_down >= HEIGHT)
 				return (1);

@@ -6,7 +6,7 @@
 /*   By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 14:26:01 by kchaouki          #+#    #+#             */
-/*   Updated: 2023/03/12 14:30:21 by kchaouki         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:14:48 by kchaouki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_scale	initial_scale(void)
 	scale.up_down = 0;
 	scale.z_scale = 0;
 	scale.zome_scale = 0;
+	scale.rotat = 0;
+	scale.rotation_angle = 0;
 	return (scale);
 }
 
@@ -39,7 +41,13 @@ void	arrow_key(int key, t_scale *scale)
 void	rotation_key(int key, t_scale *scale)
 {
 	if (key == ROTATION)
-		scale->angle = 1;
+	{
+		scale->rotation_angle = 1;
+		scale->rotat = 1;
+	}
 	else if (key == RROTATION)
-		scale->angle = -1;
+	{
+		scale->rotat = 1;
+		scale->rotation_angle = -1;
+	}
 }
