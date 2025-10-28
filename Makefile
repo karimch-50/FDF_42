@@ -6,7 +6,7 @@
 #    By: kchaouki <kchaouki@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/22 16:57:50 by kchaouki          #+#    #+#              #
-#    Updated: 2023/03/12 17:05:58 by kchaouki         ###   ########.fr        #
+#    Updated: 2025/10/28 19:38:46 by kchaouki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,16 +45,19 @@ OBJS = $(SRCS:.c=.o)
 
 OBJS_B = $(SRCS_B:.c=.o)
 
-MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS = -Lminilibx_macos -lmlx -framework OpenGL -framework AppKit
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -Iminilibx_macos
 
 CCe = cc
 
-all: $(LIBFT) $(NAME)
+all: $(LIBFT) minilibx_macos/libmlx.a $(NAME)
 
 $(LIBFT):
 	make -C libft && make clean -C libft 
+
+minilibx_macos/libmlx.a:
+	make -C minilibx_macos
 
 %.o : %.c
 	$(CCe) $(FLAGS) -c $< -o $@
@@ -69,9 +72,11 @@ $(NAME_B) : $(OBJS_B) fdf.h
 
 clean:
 	rm -rf $(OBJS) $(OBJS_B)
+	make clean -C minilibx_macos
 
 fclean: clean
 	rm -rf $(NAME) $(NAME_B) $(LIBFT)
+	make clean -C minilibx_macos
 
 re : fclean all
 
