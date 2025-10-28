@@ -18,5 +18,3 @@ $ ./fdf mars.fdf
 
 ## Resources:
 * [Project's subject](./other/subject.pdf)
-* https://github.com/VBrazhnik/FdF/wiki
-* https://www.youtube.com/v/10P59aOgi68
